@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0512C37C2DA39E8B00E3B495 /* PercevyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0512C37A2DA39E8B00E3B495 /* PercevyApp.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		0512C37A2DA39E8B00E3B495 /* PercevyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercevyApp.swift; sourceTree = "<group>"; };
 		05F1BBCE2D9ED73800C2BC5A /* Percevy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Percevy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -32,6 +37,7 @@
 		05F1BBC52D9ED73800C2BC5A = {
 			isa = PBXGroup;
 			children = (
+				0512C37A2DA39E8B00E3B495 /* PercevyApp.swift */,
 				05F1BBD02D9ED73800C2BC5A /* Percevy */,
 				05F1BBCF2D9ED73800C2BC5A /* Products */,
 			);
@@ -119,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0512C37C2DA39E8B00E3B495 /* PercevyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +256,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_ENTITLEMENTS = Percevy/Percevy.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Percevy/Resource/Percevy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9JZYRP3D46;
@@ -292,7 +299,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_ENTITLEMENTS = Percevy/Percevy.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Percevy/Resource/Percevy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9JZYRP3D46;

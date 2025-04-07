@@ -4,7 +4,7 @@ import SwiftUI
 struct PercevyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ChatView()
         }
     }
 }

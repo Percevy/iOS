@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WalkthroughView: View {
-    @State private var isStartMessagingButtonTapped: Bool = false
+    @State private var isStartMessagingButtonTapped = false
     
     var body: some View {
         NavigationStack {
@@ -12,6 +12,9 @@ struct WalkthroughView: View {
                 startMessagingButton
             }
             .padding(.horizontal, ConstantSize.contentPaddingHorizontal.rawValue)
+            .navigationDestination(isPresented: $isStartMessagingButtonTapped) {
+                SetupProfileView()
+            }
         }
     }
     
@@ -33,24 +36,19 @@ struct WalkthroughView: View {
     }
     
     var startMessagingButton: some View {
-        NavigationLink(
-            destination: SetupProfileView(),
-            isActive: $isStartMessagingButtonTapped
-        ) {
-            Button(
-                ConstantText.primaryButtonText.rawValue,
-                action: startMessagingButtonAction
-            )
-            .buttonStyle(.primary)
-            .padding(.bottom, ConstantSize.startMessagingButtonOffsetBottom.rawValue)
-        }
+        Button(
+            ConstantText.primaryButtonText.rawValue,
+            action: startMessagingButtonAction
+        )
+        .buttonStyle(.primary)
+        .padding(.bottom, ConstantSize.startMessagingButtonOffsetBottom.rawValue)
     }
 }
 
 // MARK: - Functions
 extension WalkthroughView {
     private func startMessagingButtonAction() {
-        
+        self.isStartMessagingButtonTapped = true
     }
 }
 

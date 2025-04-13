@@ -1,15 +1,11 @@
 import Foundation
 
 struct Profile {
-    private(set) var firstName: String
-    private(set) var lastName: String?
-    private(set) var avatarImage: Data?
+    private(set) var firstName: String = ""
+    private(set) var lastName: String? = nil
+    private(set) var avatarImage: Data? = nil
     
-    init(firstName: String, lastName: String?, avatarImage: Data?) {
-        self.firstName = firstName
-        self.lastName = lastName
-        self.avatarImage = avatarImage
-    }
-    
+    mutating func updateFirstName(to firstName: String) { self.firstName = firstName }
+    mutating func updateLastName(to lastName: String) { self.lastName = lastName }
     mutating func updateAvatarURL(_ data: Data) { self.avatarImage = data }
 }

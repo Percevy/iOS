@@ -6,12 +6,12 @@ struct WalkthroughView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .center) {
-                illustrationImage
-                walktrhoughBodyText
+                illustrationImage.padding(.top, 102)
+                walktrhoughBodyText.padding(.top, 42)
                 Spacer()
-                startMessagingButton
+                startMessagingButton.padding(.bottom, 20)
             }
-            .padding(.horizontal, ConstantSize.contentPaddingHorizontal)
+            .padding(.horizontal, 24)
             .navigationDestination(isPresented: $isStartMessagingButtonTapped) {
                 SetupProfileView()
             }
@@ -24,7 +24,6 @@ struct WalkthroughView: View {
                 width: ConstantSize.illustrationWidth,
                 height: ConstantSize.illustrationHeight
             )
-            .padding(.top, ConstantSize.illustrationOffsetTop)
     }
     
     var walktrhoughBodyText: some View {
@@ -32,7 +31,6 @@ struct WalkthroughView: View {
             .foregroundStyle(.brandBackground)  // FIXME: 다크모드에서 색이 바뀌어야 됨
             .font(.percevyFont(.heading2))
             .multilineTextAlignment(.center)
-            .padding(.top, ConstantSize.walkthroughBodyOffsetTop)
     }
     
     var startMessagingButton: some View {
@@ -41,7 +39,6 @@ struct WalkthroughView: View {
             action: startMessagingButtonAction
         )
         .buttonStyle(.primary)
-        .padding(.bottom, ConstantSize.startMessagingButtonOffsetBottom)
     }
 }
 
@@ -56,12 +53,8 @@ extension WalkthroughView {
 // MARK: - Constant value
 extension WalkthroughView {
     private enum ConstantSize {
-        static let contentPaddingHorizontal: CGFloat = 24
         static let illustrationWidth: CGFloat = 262
         static let illustrationHeight: CGFloat = 271
-        static let illustrationOffsetTop: CGFloat = 102 // 45(Navigation bar bottom to illustration image) + 57(Status bar to Navigation bottom)
-        static let walkthroughBodyOffsetTop: CGFloat = 42
-        static let startMessagingButtonOffsetBottom: CGFloat = 20
     }
     
     private enum ConstantText {

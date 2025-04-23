@@ -1,17 +1,22 @@
 import SwiftUI
 
 struct AvatarView: View {
+    @Binding var imageData: Data?
+
     var body: some View {
-        // 1. 저장된 이미지가 있다면 불러오기
-        
-        
-        // 2. 없다면 기본 프로필 띄우기
         Circle()
             .fill(Color.neutralOffWhite)
-            .overlay { Image(.avatar) }
+            .overlay {
+                if let image = Image(data: imageData) {
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(Circle())
+                } else { Image(.avatar) }
+            }
     }
 }
 
 #Preview {
-    AvatarView()
+    AvatarView(imageData: .constant(nil))
 }

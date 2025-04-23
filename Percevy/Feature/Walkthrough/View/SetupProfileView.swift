@@ -18,6 +18,7 @@ struct SetupProfileView: View {
                 // 스킴은 어떻게 규칙을 정하지?
         }
         .navigationTitle(ConstantText.navigationTitle)
+        .navigationBarTitleDisplayMode(.inline)
         .padding(.horizontal, 24)
     }
     
@@ -84,5 +85,7 @@ extension SetupProfileView {
 }
 
 #Preview {
-    SetupProfileView()
+    NavigationStack {
+        SetupProfileView()
+    }
 }

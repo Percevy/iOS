@@ -6,12 +6,12 @@ struct WalkthroughView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .center) {
-                illustrationImage
-                walktrhoughBodyText
+                illustrationImage.padding(.top, 102)
+                walktrhoughBodyText.padding(.top, 42)
                 Spacer()
-                startMessagingButton
+                startMessagingButton.padding(.bottom, 20)
             }
-            .padding(.horizontal, ConstantSize.contentPaddingHorizontal.rawValue)
+            .padding(.horizontal, 24)
             .navigationDestination(isPresented: $isStartMessagingButtonTapped) {
                 SetupProfileView()
             }
@@ -21,27 +21,24 @@ struct WalkthroughView: View {
     var illustrationImage: some View {
         Image(.illustration)
             .frame(
-                width: ConstantSize.illustrationWidth.rawValue,
-                height: ConstantSize.illustrationHeight.rawValue
+                width: ConstantSize.illustrationWidth,
+                height: ConstantSize.illustrationHeight
             )
-            .padding(.top, ConstantSize.illustrationOffsetTop.rawValue)
     }
     
     var walktrhoughBodyText: some View {
-        Text(ConstantText.walkthroughBody.rawValue)
+        Text(ConstantText.walkthroughBody)
             .foregroundStyle(.brandBackground)  // FIXME: 다크모드에서 색이 바뀌어야 됨
             .font(.percevyFont(.heading2))
             .multilineTextAlignment(.center)
-            .padding(.top, ConstantSize.walkthroughBodyOffsetTop.rawValue)
     }
     
     var startMessagingButton: some View {
         Button(
-            ConstantText.primaryButtonText.rawValue,
+            ConstantText.primaryButtonText,
             action: startMessagingButtonAction
         )
         .buttonStyle(.primary)
-        .padding(.bottom, ConstantSize.startMessagingButtonOffsetBottom.rawValue)
     }
 }
 
@@ -55,18 +52,14 @@ extension WalkthroughView {
 
 // MARK: - Constant value
 extension WalkthroughView {
-    private enum ConstantSize: CGFloat {
-        case contentPaddingHorizontal = 24
-        case illustrationWidth = 262
-        case illustrationHeight = 271
-        case illustrationOffsetTop = 102 // 45(Navigation bar bottom to illustration image) + 57(Status bar to Navigation bottom)
-        case walkthroughBodyOffsetTop = 42
-        case startMessagingButtonOffsetBottom = 20
+    private enum ConstantSize {
+        static let illustrationWidth: CGFloat = 262
+        static let illustrationHeight: CGFloat = 271
     }
     
-    private enum ConstantText: String {
-        case walkthroughBody = "Connect easily with\nyour family and friends\nover countries"
-        case primaryButtonText = "Start Messaging"
+    private enum ConstantText {
+        static let walkthroughBody = "Connect easily with\nyour family and friends\nover countries"
+        static let primaryButtonText = "Start Messaging"
     }
 }
 

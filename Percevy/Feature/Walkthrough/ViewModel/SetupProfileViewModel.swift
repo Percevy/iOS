@@ -3,9 +3,9 @@ import PhotosUI
 import OSLog
 
 class SetupProfileViewModel: ObservableObject {
-    @Published var profile: Profile
+    @Published private var profile: Profile
     @Published var selectedPhoto: PhotosPickerItem? {
-        didSet { loadImageFromSelectedPhoto() }
+        didSet { loadImageData(from: self.selectedPhoto) }
     }
 
     init(profile: Profile = Profile()) { self.profile = profile }
@@ -25,7 +25,7 @@ class SetupProfileViewModel: ObservableObject {
         set { profile.updateAvatarImageData(to: newValue) }
     }
 
-    private func loadImageFromSelectedPhoto() {
+    private func loadImageData(from selectedPhoto: PhotosPickerItem?) {
         Task {
             do {
                 let data = try await selectedPhoto?.loadTransferable(type: Data.self)

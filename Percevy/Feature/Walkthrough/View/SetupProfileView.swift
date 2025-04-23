@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SetupProfileView: View {
-    @ObservedObject var viewModel = SetupProfileViewModel()
+    @StateObject var viewModel = SetupProfileViewModel()
     
     var body: some View {
         VStack {

@@ -3,8 +3,8 @@ import Foundation
 class SetupProfileViewModel: ObservableObject {
     @Published var profile: Profile?
     
-    init() { self.profile = nil }
-    
+    init(profile: Profile = Profile()) { self.profile = profile }
+
     var firstNameBinding: String {
         get { profile?.firstName ?? "" }
         set { profile?.updateFirstName(to: newValue) }

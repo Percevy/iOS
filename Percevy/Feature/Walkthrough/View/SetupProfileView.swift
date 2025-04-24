@@ -2,6 +2,8 @@ import SwiftUI
 import PhotosUI
 
 struct SetupProfileView: View {
+    @EnvironmentObject private var appRootManager: AppRootManager
+
     @StateObject var viewModel = SetupProfileViewModel()
 
     @State private var isAddProfileImageSheetPresented: Bool = false
@@ -77,7 +79,9 @@ extension SetupProfileView {
         self.isAddProfileImageSheetPresented = true
     }
     
-    private func saveButtonAction() { }
+    private func saveButtonAction() {
+        self.appRootManager.changeRoot(to: .main)
+    }
 }
 
 extension SetupProfileView {

@@ -73,16 +73,12 @@ private struct TabButton<SelectedView: View, UnselectedView: View>: View {
         self.selectedView = selectedView
         self.unselectedView = unselectedView
     }
-
+    
     var body: some View {
         HStack {
             Spacer()
-            if selectedTabType == tabType {
-                AnyView(selectedView())
-            } else {
-                AnyView(unselectedView())
-                    .onTapGesture(perform: action)
-            }
+            if selectedTabType == tabType { selectedView() }
+            else { unselectedView().onTapGesture(perform: action) }
             Spacer()
         }
     }

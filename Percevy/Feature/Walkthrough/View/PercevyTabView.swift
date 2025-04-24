@@ -32,7 +32,10 @@ struct PercevyTabView: View {
                 tabType: .more,
                 action: moreHorizontalButtonTapped,
                 selected: {
-                    SelectedTabButton(text: "More", id: circleNamespace)
+                    SelectedTabButton(
+                        text: "More",
+                        id: circleNamespace
+                    )
                 },
                 unselected: { Image(.moreHorizontal) }
             )
@@ -76,8 +79,10 @@ private struct TabButton<SelectedView: View, UnselectedView: View>: View {
             Spacer()
             if selectedTabType == tabType {
                 AnyView(selectedView())
+            } else {
+                AnyView(unselectedView())
+                    .onTapGesture(perform: action)
             }
-            else { AnyView(unselectedView()).onTapGesture(perform: action) }
             Spacer()
         }
     }
@@ -98,7 +103,8 @@ private struct SelectedTabButton: View {
 
     var body: some View {
         VStack {
-            Text(text).font(.percevyFont(.body2))
+            Text(text)
+                .font(.percevyFont(.body2))
             Circle()
                 .frame(width: 6, height: 6)
                 .matchedGeometryEffect(id: "circle", in: nameSpaceID)

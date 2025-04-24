@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PercevyTabView: View {
     @State private var selectedTab: TabType = .chatList
+    @Namespace var circleNamespace
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -20,7 +21,9 @@ struct PercevyTabView: View {
                 current: $selectedTab,
                 tabType: .chatList,
                 action: chatBallonButtonTapped,
-                selected: { SelectedTabButton(text: "Chats") },
+                selected: {
+                    SelectedTabButton(text: "Chats", id: circleNamespace)
+                },
                 unselected: { Image(.chatBalloon) }
             )
 
@@ -28,10 +31,13 @@ struct PercevyTabView: View {
                 current: $selectedTab,
                 tabType: .more,
                 action: moreHorizontalButtonTapped,
-                selected: { SelectedTabButton(text: "More") },
+                selected: {
+                    SelectedTabButton(text: "More", id: circleNamespace)
+                },
                 unselected: { Image(.moreHorizontal) }
             )
         }
+        .animation(.spring, value: selectedTab)
     }
 }
 
@@ -68,7 +74,9 @@ private struct TabButton<SelectedView: View, UnselectedView: View>: View {
     var body: some View {
         HStack {
             Spacer()
-            if selectedTabType == tabType { AnyView(selectedView()) }
+            if selectedTabType == tabType {
+                AnyView(selectedView())
+            }
             else { AnyView(unselectedView()).onTapGesture(perform: action) }
             Spacer()
         }
@@ -78,15 +86,22 @@ private struct TabButton<SelectedView: View, UnselectedView: View>: View {
 // MARK: Selected Custom Tab Button
 private struct SelectedTabButton: View {
     private let text: String
+    let nameSpaceID: Namespace.ID
 
-    init(text: String) {
+    init(
+        text: String,
+        id nameSpaceID: Namespace.ID
+    ) {
         self.text = text
+        self.nameSpaceID = nameSpaceID
     }
 
     var body: some View {
         VStack {
             Text(text).font(.percevyFont(.body2))
-            Circle().frame(width: 6, height: 6)
+            Circle()
+                .frame(width: 6, height: 6)
+                .matchedGeometryEffect(id: "circle", in: nameSpaceID)
         }
     }
 }

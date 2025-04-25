@@ -17,11 +17,6 @@ final class ChatListViewModel: ObservableObject {
 
 // MARK: Functions
 extension ChatListViewModel {
-    func getChats(at index: Int) -> Chat {
-        // Index 오류 방지
-        return chats[index]
-    }
-
     private func updateInputText(to inputText: String) {
         self.inputText = inputText
     }

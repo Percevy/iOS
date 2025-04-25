@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ChatListRow: View {
+struct ChatListRowView: View {
     @Binding var chat: Chat
 
     var body: some View {
@@ -32,5 +32,5 @@ struct ChatListRow: View {
         recentDate: Date()
     )
 
-    ChatListRow(chat: $previewChat)
+    ChatListRowView(chat: $previewChat)
 }

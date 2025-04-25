@@ -11,7 +11,7 @@ struct ChatListView: View {
 
             List {
                 ForEach($viewModel.chats, id: \.self) { chat in
-                    ChatListRow(chat: chat)
+                    ChatListRowView(chat: chat)
                         .listRowSeparator(.hidden)
                 }
             }

@@ -1,6 +1,6 @@
 import Foundation
 
-struct Chat {
+struct Chat: Hashable {
     private(set) var title: String
     private(set) var summary: String
     private(set) var recentDate: Date
@@ -19,7 +19,7 @@ struct Chat {
         ).day ?? 0
 
         if daysDifference == 1 {
-            return "yesterday"
+            return "Yesterday"
         } else if daysDifference > 1 && daysDifference < 7 {
             return "\(daysDifference) days ago"
         } else if daysDifference >= 7 {
@@ -27,7 +27,7 @@ struct Chat {
             formatter.dateFormat = "M/d"
             return formatter.string(from: recentDate)
         } else {
-            return "now"
+            return "Today"
         }
     }
 }

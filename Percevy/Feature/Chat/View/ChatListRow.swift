@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ChatListRow: View {
+    @Binding var chat: Chat
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {

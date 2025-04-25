@@ -2,6 +2,8 @@ import SwiftUI
 
 struct ChatListView: View {
     @StateObject private var viewModel = ChatListViewModel()
+    @State private var isNewChatPresented: Bool = false
+    @State private var isChatListRowSelected: Bool = false
 
     var body: some View {
         VStack {
@@ -12,14 +14,25 @@ struct ChatListView: View {
             List {
                 ForEach($viewModel.chats, id: \.self) { chat in
                     ChatListRowView(chat: chat)
-                        .listRowSeparator(.hidden)
+                        .onTapGesture {
+                            self.isChatListRowSelected = true
+                        }
                 }
+                .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
             .padding(.horizontal, 8)
         }
         .toolbar { toolBarContents }
         .background(Color.background)
+        .navigationDestination(
+            isPresented: $isNewChatPresented,
+            destination: { ChatView() }
+        )
+        .navigationDestination(
+            isPresented: $isChatListRowSelected,
+            destination: { ChatView() }
+        )
     }
 
     @ToolbarContentBuilder
@@ -46,7 +59,7 @@ struct ChatListView: View {
 
 // MARK: Button actions
 extension ChatListView {
-    private func newChatButtonTapped() { }
+    private func newChatButtonTapped() { self.isNewChatPresented = true }
 
     private func editChatListButtonTapped() { }
 }

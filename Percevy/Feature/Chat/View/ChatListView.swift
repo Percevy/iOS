@@ -17,11 +17,11 @@ struct ChatListView: View {
                         .onTapGesture {
                             self.isChatListRowSelected = true
                         }
+                        .padding(.horizontal, 8)
                 }
                 .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
-            .padding(.horizontal, 8)
         }
         .toolbar { toolBarContents }
         .background(Color.background)

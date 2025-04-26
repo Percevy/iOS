@@ -4,6 +4,7 @@ struct ChatListView: View {
     @StateObject private var viewModel = ChatListViewModel()
     @State private var isNewChatPresented: Bool = false
     @State private var isChatListRowSelected: Bool = false
+    @State private var isEditMode: EditMode = .inactive
 
     var body: some View {
         VStack {
@@ -19,6 +20,7 @@ struct ChatListView: View {
                         }
                         .padding(.horizontal, 8)
                 }
+                .onDelete(perform: removeRow)
                 .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
@@ -33,6 +35,8 @@ struct ChatListView: View {
             isPresented: $isChatListRowSelected,
             destination: { ChatView() }
         )
+        .onDisappear(perform: { isEditMode = .inactive })
+        .environment(\.editMode, $isEditMode)
     }
 
     @ToolbarContentBuilder
@@ -61,7 +65,15 @@ struct ChatListView: View {
 extension ChatListView {
     private func newChatButtonTapped() { self.isNewChatPresented = true }
 
-    private func editChatListButtonTapped() { }
+    private func editChatListButtonTapped() {
+        withAnimation {
+            isEditMode = (isEditMode == .active) ? .inactive : .active
+        }
+    }
+
+    private func removeRow(at offsets: IndexSet) {
+        viewModel.chats.remove(atOffsets: offsets)
+    }
 }
 
 #Preview {

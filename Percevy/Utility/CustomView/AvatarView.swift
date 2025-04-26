@@ -5,7 +5,7 @@ struct AvatarView: View {
 
     var body: some View {
         Circle()
-            .fill(Color.neutralOffWhite)
+            .fill(Color.neutralOffwhite)
             .overlay {
                 if let image = Image(data: imageData) {
                     image

@@ -7,8 +7,8 @@ struct PercevyTabView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
-                ChatListView().tag(TabType.chatList)
-                MoreView().tag(TabType.more)
+                NavigationStack { ChatListView() }.tag(TabType.chatList)
+                NavigationStack { MoreView() }.tag(TabType.more)
             }
 
             tabOverlay
@@ -110,8 +110,8 @@ private struct SelectedTabButton: View {
 
 // MARK: Tab Type
 private enum TabType: Int {
-    case chatList = 0
-    case more = 1
+    case chatList
+    case more
 }
 
 #Preview {

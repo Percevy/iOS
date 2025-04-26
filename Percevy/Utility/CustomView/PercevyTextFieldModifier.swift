@@ -8,7 +8,7 @@ private struct PercevyTextFieldModifier: ViewModifier {
             .padding(.vertical, 6)
             .frame(minHeight: 36)
             .background(
-                .neutralOffWhite,   // TODO: 다크모드 대응
+                .neutralOffwhite,   // TODO: 다크모드 대응
                 in: RoundedRectangle(cornerRadius: 4)
             )
     }

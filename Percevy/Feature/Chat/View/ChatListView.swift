@@ -8,6 +8,7 @@ struct ChatListView: View {
 
     var body: some View {
         VStack {
+            // 작업 추가
             SearchBarView(text: $viewModel.inputTextBinding)
                 .padding(.top, 16)
                 .padding(.horizontal, 24)

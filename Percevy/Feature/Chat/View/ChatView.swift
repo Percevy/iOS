@@ -9,6 +9,12 @@ struct ChatView: View {
             messagingView
             messageToolbar
         }
+        .percevyNavigationBar(title: viewModel.messagesSummary)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: searchButtonTapped) { Image(.search) }
+            }
+        }
         .background(.neutralOffwhite)
     }
 

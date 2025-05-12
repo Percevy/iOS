@@ -20,6 +20,14 @@ struct ChatBallon: View {
             }
             .padding(10)
             .background(chatter.backgroundColor)
+            .clipShape(
+                RoundedCorners(
+                    topLeading: 16,
+                    topTrailing: 16,
+                    bottomLeading: chatter == .me ? 16 : 0,
+                    bottomTrailing: chatter == .me ? 0 : 16
+                )
+            )
 
             if chatter == .other { Spacer() }
         }

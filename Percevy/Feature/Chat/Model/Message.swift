@@ -1,6 +1,8 @@
 import SwiftUI
 
-struct Message: Identifiable {
+struct Message: Identifiable, Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool { return lhs.id == rhs.id }
+
     var id: UUID = UUID()
 
     let chatter: Chatter

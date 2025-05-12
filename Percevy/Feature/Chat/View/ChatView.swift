@@ -19,12 +19,26 @@ struct ChatView: View {
     }
 
     private var messagingView: some View {
-        ScrollView(.vertical) {
-            ForEach(viewModel.messages) { message in
-                ChatBallon(chatter: message.chatter, text: message.text, date: message.date)
+        ScrollViewReader { proxy in
+            ScrollView(.vertical) {
+                ForEach(viewModel.messages) { message in
+                    ChatBallon(
+                        chatter: message.chatter,
+                        text: message.text,
+                        date: message.date
+                    )
+                    .id(message.id)
+                }
+            }
+            .padding(.horizontal, 10)
+            .onChange(of: viewModel.messages) { messages in
+                guard let lastMessage = messages.last else { return }
+
+                withAnimation {
+                    proxy.scrollTo(lastMessage.id, anchor: .bottom)
+                }
             }
         }
-        .padding(.horizontal, 10)
     }
 
     private var messageToolbar: some View {

@@ -43,7 +43,7 @@ struct SetupProfileView: View {
         ZStack(alignment: .bottomTrailing) {
             AvatarView(imageData: $viewModel.avatarImageBinding )
             Button(action: addProfileImageButtonTapped) {
-                Image(.addIcon).padding(.all, 6)
+                Image(.addCircle).padding(.all, 6)
             }
         }
         .frame(width: 100, height: 100)

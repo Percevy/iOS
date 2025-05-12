@@ -26,6 +26,7 @@ struct ChatView: View {
             Button(action: addButtonTapped) { Image(.addIcon) }
             TextField("Type your message", text: $typeMessage)
                 .percevyTextFieldModifier()
+                .onSubmit(sendButtonTapped)
             Button(action: sendButtonTapped) { Image(.send) }
         }
         .padding(.vertical, 10)
@@ -45,6 +46,9 @@ extension ChatView {
     }
 
     func sendButtonTapped() {
+        viewModel.addMessage(by: .me, message: typeMessage)
+        viewModel.addReplyMessage()
+        typeMessage = ""
     }
 }
 

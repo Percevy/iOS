@@ -10,22 +10,14 @@
 		05F1BBCE2D9ED73800C2BC5A /* Percevy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Percevy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		0512C5B12DA3B38F00E3B495 /* Exceptions for "Percevy" folder in "Percevy" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Resource/Info.plist,
-			);
-			target = 05F1BBCD2D9ED73800C2BC5A /* Percevy */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		0506BE742DD763EC006CDEDE /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
 		05F1BBD02D9ED73800C2BC5A /* Percevy */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				0512C5B12DA3B38F00E3B495 /* Exceptions for "Percevy" folder in "Percevy" target */,
-			);
 			path = Percevy;
 			sourceTree = "<group>";
 		};
@@ -45,6 +37,7 @@
 		05F1BBC52D9ED73800C2BC5A = {
 			isa = PBXGroup;
 			children = (
+				0506BE742DD763EC006CDEDE /* Models */,
 				05F1BBD02D9ED73800C2BC5A /* Percevy */,
 				05F1BBCF2D9ED73800C2BC5A /* Products */,
 			);
@@ -74,6 +67,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				0506BE742DD763EC006CDEDE /* Models */,
 				05F1BBD02D9ED73800C2BC5A /* Percevy */,
 			);
 			name = Percevy;
